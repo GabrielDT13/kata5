@@ -15,7 +15,7 @@ public class RandomUserDisplay extends JPanel implements UserDisplay{
         jPanel.setLayout(new BoxLayout(jPanel, BoxLayout.Y_AXIS));
 
         jPanel.add(loadPhoto(user));
-        jPanel.add(userInfo(user));
+        jPanel.add(userValues(user));
         add(jPanel);
     }
 
@@ -27,7 +27,7 @@ public class RandomUserDisplay extends JPanel implements UserDisplay{
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
         return label;
     }
-
+    
     private BufferedImage readPhotoFromBytes(User user) {
         byte[] photo = user.getPhoto();
         try(ByteArrayInputStream data = new ByteArrayInputStream(photo)){
@@ -37,7 +37,7 @@ public class RandomUserDisplay extends JPanel implements UserDisplay{
         }
     }
 
-    private JPanel userInfo(User user) {
+    private JPanel userValues(User user) {
         JLabel name = CreateCenterLabel(user.getName());
         JLabel email = CreateCenterLabel(user.getEmail());
         JLabel gender = CreateCenterLabel(String.valueOf(user.getGender()));
@@ -53,8 +53,8 @@ public class RandomUserDisplay extends JPanel implements UserDisplay{
         return jPanel;
     }
 
-    private JLabel CreateCenterLabel(String userData) {
-        JLabel jLabel = new JLabel(userData);
+    private JLabel CreateCenterLabel(String value) {
+        JLabel jLabel = new JLabel(value);
         jLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         return jLabel;
     }
